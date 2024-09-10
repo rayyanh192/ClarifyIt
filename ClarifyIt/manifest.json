@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "ClarifyIt",
+    "version": "0.0.1",
+    "description": "A Chrome extension for text-to-speech and AI explanations.",
+    "permissions": ["activeTab", "storage", "tts"],
+    "host_permissions": ["https://api.openai.com/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/square-16.png",
+        "48": "icons/square-48.png",
+        "128": "icons/square-128.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
