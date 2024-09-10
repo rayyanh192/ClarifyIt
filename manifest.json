@@ -3,7 +3,7 @@
     "name": "ClarifyIt",
     "version": "0.0.1",
     "description": "A Chrome extension for text-to-speech and AI explanations.",
-    "permissions": ["activeTab", "storage", "tts"],
+    "permissions": ["activeTab", "storage", "tts", "tabs", "background"],
     "host_permissions": ["https://api.openai.com/*"],
     "background": {
       "service_worker": "background.js"
