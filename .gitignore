@@ -1,0 +1,8 @@
+# Node.js dependencies
+openai-proxy/node_modules/
+
+# Environment variables
+openai-proxy/.env
+
+# MacOS system files (optional)
+.DS_Store

@@ -1,15 +1,25 @@
-chrome.runtime.onMessage.addListener((message) => {
-    if (message.action === "getExplanation") {
-      fetch('http://localhost:5000/getExplanation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: message.text })
-      })
-      .then(response => response.json())
-      .then(data => {
-        // Use the AI explanation data in your extension
-        displayExplanation(data.explanation);
-      })
-      .catch(error => console.error('Error:', error));
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === "getExplanation") {
+      fetchExplanationFromProxy(request.text).then(response => {
+        sendResponse({ explanation: response });
+      });
+      return true;  // To keep the message channel open for async response
     }
   });
+  
+  async function fetchExplanationFromProxy(text) {
+    try {
+      const response = await fetch('http://localhost:3000/api/explain', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: text })
+      });
+      const data = await response.json();
+      return data.explanation;
+    } catch (error) {
+      console.error('Error fetching explanation:', error);
+      return 'An error occurred while fetching the explanation.';
+    }
+  }

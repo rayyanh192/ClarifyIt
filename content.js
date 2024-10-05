@@ -1,6 +1,11 @@
-document.addEventListener('mouseup', function() {
+document.addEventListener('mouseup', () => {
     let selectedText = window.getSelection().toString();
-    if (selectedText.length > 0) {
-      chrome.runtime.sendMessage({ action: "textSelected", text: selectedText });
+    if (selectedText) {
+      chrome.runtime.sendMessage({
+        action: "getExplanation",
+        text: selectedText
+      }, (response) => {
+        console.log("Explanation: ", response.explanation);
+      });
     }
   });
