@@ -1,12 +1,16 @@
 require('dotenv').config();
-
 const express = require('express');
+const cors = require('cors');
 const axios = require('axios');
+const OpenAI = require('openai');
+
 const app = express();
 
-app.use(express.json());  // Middleware to parse JSON
+app.use(cors());
+app.use(express.json());
+//const cors = require('cors'); // Add this line at the top with your imports
+app.use(cors());
 
-// Endpoint to handle requests from the Chrome extension
 app.post('/api/explain', async (req, res) => {
   const userText = req.body.text;
 
@@ -30,7 +34,6 @@ app.post('/api/explain', async (req, res) => {
   }
 });
 
-// Start server on port 3000
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

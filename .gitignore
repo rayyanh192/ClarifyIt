@@ -6,3 +6,4 @@ openai-proxy/.env
 
 # MacOS system files (optional)
 .DS_Store
+.env

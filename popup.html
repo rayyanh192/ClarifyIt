@@ -8,10 +8,12 @@
 </head>
 <body>
   <h1>ClarifyIt</h1>
-  <textarea id="inputText" placeholder="Paste text here..."></textarea>
-  <button id="explainButton">Explain</button>
-  <p id="explanation"></p>
+  
+  <input type="text" id="userInput" placeholder="Paste text here. . .">
+  <button id="getExplanation">Explain</button>
+  <p id="response"></p>
 
-  <script src="popup.js"></script>
+  <!-- Use defer to ensure that popup.js loads after the DOM is fully loaded -->
+  <script src="popup.js" defer></script>
 </body>
 </html>

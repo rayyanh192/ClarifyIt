@@ -2,8 +2,8 @@
     "manifest_version": 3,
     "name": "ClarifyIt",
     "version": "0.0.1",
-    "description": "A Chrome extension for text-to-speech and AI explanations.",
-    "permissions": ["activeTab", "storage", "tts", "tabs", "background"],
+    "description": "A Chrome extension for AI explanations.",
+    "permissions": ["activeTab", "storage", "scripting", "tabs", "background"],
     "host_permissions": ["https://api.openai.com/*", "https://localhost:3000/*"],
     "background": {
       "service_worker": "background.js"
